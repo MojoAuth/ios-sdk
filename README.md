@@ -27,25 +27,28 @@ a. SwiftDemo - This is the demo application in Swift(Supported Swift version 5).
 b. MojoAuthSDK -This is the MojoAuth SDK.
 
 
-## Installing
+## Installing SDK
 
 We recommend using CocoaPods for installing the library in a project.
 
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
 
+
 ```
 $ gem install cocoapods
 ```
 
-###Podfile
+### Podfile
 
 Open a terminal window and navigate to the location of the Xcode project for your application. If you have not already created a Podfile for your application, create one now:
+
 
 ```
 $ pod init
 ```
 
 To integrate MojoAuthSDK into your Xcode project using CocoaPods, specify it in your Podfile:
+
 
 ```
 source 'https://github.com/CocoaPods/Specs.git'
@@ -62,12 +65,13 @@ end
 
 Then, run the following command:
 
+
 ```
 $ pod install
 
 ```
 
-##Initialize SDK
+## Initialize SDK
 
 *Create a new File MojoAuth.plist and add it to your App*
 
@@ -78,6 +82,7 @@ Add the MojoAuth *apiKey* with type *String*
 
 *After that Import the module in your source code.*
 
+
 ```
 import MojoAuthSDK
 
@@ -85,11 +90,14 @@ import MojoAuthSDK
 
 *Application is launched*
 
+
 ```
 import MojoAuthSDK
  ...
 
+
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
+
 
 ...
 
@@ -112,7 +120,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 Call this to handle URL's for social login to work properly in your AppDelegate.m
 
-```
+
 ```
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
 ...
@@ -126,16 +134,16 @@ return MojoAuthSDK.sharedInstance().application(app, open: url, sourceApplicatio
 ...
 }
 
-````
 ```
 
-##MojoAuth SDK API Methods:-
+## MojoAuth SDK API Methods
 
 
-##Send magic link on the email
-###This endpoint sends a magiclink to your email.
+### Send magic link on the email
+
+This endpoint sends a magiclink to your email.
+
 ```
-// Send Magic Link.
     func MagicLink()
         {
         
@@ -149,11 +157,11 @@ return MojoAuthSDK.sharedInstance().application(app, open: url, sourceApplicatio
     }
 ```
     
-##Check Authentication status
-###This endpoint checks the login status of user.
+## Check Authentication status
+
+This endpoint checks the login status of user.
     
 ```
-  // Check Authentication Status.
     func CheckAuthenticationStatus()
         {
         
@@ -167,13 +175,13 @@ return MojoAuthSDK.sharedInstance().application(app, open: url, sourceApplicatio
     }
 ```
     
-##Resend magic link
-###This endpoint resends a magiclink to your email.
+## Resend magic link
+
+This endpoint resends a magiclink to your email.
     
-```// Resend Magic Link
-    func ResendMagicLink() 
+```
+ func ResendMagicLink() 
         {
-        
         AuthenticationAPI.authInstance().resendMagicLink(withStateID: "id", language: "language", redirect_url: "url", completionHandler: {(response,error)in
             if let e = error{
                 print(e.localizedDescription)
@@ -184,11 +192,12 @@ return MojoAuthSDK.sharedInstance().application(app, open: url, sourceApplicatio
     }
     
 ```
-##Send Email OTP
-###This endpoint sends Email OTP on the mentioned Email Address.
+
+## Send Email OTP
+
+This endpoint sends Email OTP on the mentioned Email Address.
     
 ```
-    // Send Email OTP
     func SendEmailOtp()
         {
         AuthenticationAPI.authInstance().sendEmailOTP(withEmail: "email", language: "language", completionHandler: {(response,error)
@@ -202,10 +211,11 @@ return MojoAuthSDK.sharedInstance().application(app, open: url, sourceApplicatio
     }
 ```
 
-##Verify Email OTP
-###This endpoint Verify OTP and returns user response and access token
+## Verify Email OTP
 
-```// Verify Email OTP
+This endpoint Verify OTP and returns user response and access token
+
+```
 func VerifyEmailOtp()
     {
         
@@ -220,10 +230,11 @@ func VerifyEmailOtp()
     }
 ```
     
-##Resend Email OTP
-###This endpoint resends an OTP to your email.
+## Resend Email OTP
+
+This endpoint resends an OTP to your email.
     
-```// Resend Email OTP
+```
     func ResendEmailOtp()
         {
         
@@ -238,10 +249,11 @@ func VerifyEmailOtp()
     
  ```   
  
-##Send Phone OTP
-###This endpoint sends Phone OTP on the mentioned Phone Number.
+## Send Phone OTP
+
+This endpoint sends Phone OTP on the mentioned Phone Number.
     
-```// Send Phone OTP.
+```
   func SendPhoneOtp()
       {
         
@@ -257,10 +269,11 @@ func VerifyEmailOtp()
 ```
 
  
-##Verify Phone OTP
-###This endpoint verify Phone OTP on the mentioned Phone Number.
+## Verify Phone OTP
+
+This endpoint verify Phone OTP on the mentioned Phone Number.
    
-```// Verify Phone OTP
+```
 func VerifyPhoneOTP()
     {
         
@@ -274,10 +287,11 @@ func VerifyPhoneOTP()
       
     }
 ```
-##Resend Phone OTP
-###This endpoint resends an OTP to your phone Number.
+
+## Resend Phone OTP
+This endpoint resends an OTP to your phone Number.
    
-```//Resend Phone OTP
+```
    func ResendPhoneOtp()
        {
         
@@ -292,10 +306,10 @@ func VerifyPhoneOTP()
      
 ```
 
-##JWKS
-###This endpoint provides a valid public key set for the user to validate their tokens
+## JWKS
+This endpoint provides a valid public key set for the user to validate their tokens
 
-```// Jwks
+```
 func Jwks(){
         
         AuthenticationAPI.authInstance().jwks({(response,error)in
@@ -311,9 +325,9 @@ func Jwks(){
 
 ```
 
-##Validate Token
-###This endpoint Validates the JWT Token
+## Validate Token
 
+This endpoint Validates the JWT Token
 
 ```
     AuthenticationAPI.authInstance().validateToken("<token>", completionHandler: {(response, error)in
@@ -325,10 +339,11 @@ func Jwks(){
     })
 ```
 
-##Refresh Token
-###This endpoint generates a set of new tokens by using refresh token
+## Refresh Token
 
-```// Refresh Token.
+This endpoint generates a set of new tokens by using refresh token
+
+```
 func RefreshToken()
     {
         AuthenticationAPI.authInstance().refreshAccessToken(withRefreshToken: "token", completionHandler: {(response, error)in
@@ -342,9 +357,9 @@ func RefreshToken()
 ```
 
 
-##MojoAuth SDK Native Social Login Methods:-
+## MojoAuth SDK Native Social Login Methods
 
-##Facebook native login
+### Facebook native login
 
 You don't need to download and integrate the Facebook SDK with your project. It is distributed as a dependency with MojoAuth SDK. Just make sure your Info.plist
 
@@ -353,6 +368,7 @@ You don't need to download and integrate the Facebook SDK with your project. It 
 If you are making your app, then proceed to add these lines of codes.
 
 and you are calling application:openURL:sourceApplication:annotation in your AppDelegate.m.
+
 
 ```
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -369,6 +385,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 
 *Replace the values with your Facebook App ID and Display name from your App Settings page in Facebook Developer portal(https://developers.facebook.com/)*
 
+
 ```
 MojoAuthSocialLoginManager.sharedInstance().nativeFacebookLogin(withPermissions: ["facebookPermissions": ["public_profile"]], in: self, completionHandler: {( data, error) -> Void in
 
@@ -380,7 +397,7 @@ MojoAuthSocialLoginManager.sharedInstance().nativeFacebookLogin(withPermissions:
 })
 ```
 
-##Google native login
+### Google native login
 
 Google Native Login is done through Google SignIn Library since this is a static library and has problems when you are using CocoaPods with uses_frameworks!, you have to manually install the SDK.
 
@@ -394,19 +411,19 @@ Follow these steps:
 
 4.Add Google Sign In by following the https://developers.google.com/identity/sign-in/ios/sign-in
 
-5.If you are using our demo, go to our AppDelegate.swift and set useGoogleNative to true to display our native google ui. Our demo already contain all the necessary code to perform native Google Sign in, you just have to uncomment any instance of /* Google Native SignIn <code block> */
+5.If you are using our demo, go to our AppDelegate.swift and set useGoogleNative to true to display our native google ui. Our demo already contain all the necessary code to perform native Google Sign in, you just have to uncomment any instance of /* Google Native SignIn `<code block>` */
 
 6.If you are making your own app, proceed to add these lines of codes. You can also see our demo to see the native google sign in action!
 
 7.Add Google SignIn Library to your Podfile. pod 'Google/SignIn'
 
-8.Now change your App Delegate's open URL to handle both google native sign in and our default logins
+8.Now change your App Delegate's open URL to handle both google native sign in and our default logins.
+
 
 ```
 func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool
     {
         var canOpen = false
-
         canOpen = (canOpen || GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation]))
 
         canOpen = (canOpen || MojoAuthsSDK.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation]))
@@ -416,6 +433,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpe
 ```
 
 9.You have to exchange the Google token with MojoAuth Token. Call the following function in the SignIn delegate method after successful sign in.
+
 
 ```
 func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
